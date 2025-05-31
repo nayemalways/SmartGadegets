@@ -1,10 +1,11 @@
 import React from 'react';
+import Layout from '../layout/Layout';
 
 const Register = () => {
     return (
-        <div>
-            <h1 className='text-5xl bg-indigo-500'>Welcome to Registration pages</h1>
-        </div>
+        <Layout>
+            <h1>Welcome to Registration pages</h1>
+        </Layout>
     );
 };
 
