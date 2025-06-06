@@ -28,10 +28,10 @@ const Dropdown = () => {
     return (
          
             <div>
-              <div ref={dropdownRef} className='w-10 h-10 border rounded-full flex justify-center items-center overflow-hidden cursor-pointer' onClick={dropdownHandler}>
+              <div ref={dropdownRef} className='w-7 md:w-10 md:h-10 border rounded-full flex justify-center items-center overflow-hidden cursor-pointer' onClick={dropdownHandler}>
                 <img className='w-full' src="https://i.pravatar.cc/30" alt="Profile_Icon" />
               </div>
-               <ul className={`absolute right-20 w-56 overflow-hidden rounded-lg bg-gray-900/90 backdrop-blur-xl shadow-lg duration-300 ${dropdownOpen ? "opacity-100":"opacity-0"}`}>
+               <ul className={`w-56 absolute mt-1 right-1 md:right-15 lg:right-10 xl:right-25 overflow-hidden rounded-lg bg-gray-900/90 backdrop-blur-xl shadow-lg duration-300 ${dropdownOpen ? "opacity-100":"opacity-0"}`}>
                   <li className='hover:bg-gray-800 px-4 py-3 space-x-3 border-b border-gray-800'>
                     <svg
                       className="inline w-5 text-gray-300"
