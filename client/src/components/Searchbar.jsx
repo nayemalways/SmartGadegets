@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import  { useEffect, useRef, useState } from 'react';
 
 const Searchbar = () => {
     const [toggle, setToggle] = useState(false);
@@ -40,8 +40,8 @@ const Searchbar = () => {
               </button>
 
               {/* Small devices pop-up searchbar  */}
-              <div className={`w-80 h-20 bg-slate-gray rounded-md flex justify-center items-center shadow-md absolute -left-50 top-10 z-20 sm:hidden ${toggle ? "block":"hidden"}`}>
-                <input className='border-l-1 border-t-1 border-b-1 border-primary outline-none text-[12px] px-2 py-1 rounded-l-sm' id='phone_search'  type="text" placeholder='What are you looking for?' />
+              <div className={`w-70 h-20 bg-slate-gray rounded-md flex justify-center items-center shadow-md absolute -left-30 top-10 z-20 sm:hidden ${toggle ? "block":"hidden"}`}>
+                <input className='w-[70%] border-l-1 border-t-1 border-b-1 border-primary outline-none text-[12px] px-2 py-1 rounded-l-sm' id='phone_search'  type="text" placeholder='What are you looking for?' />
                 <button className='bg-primary text-text-color px-2 py-1 rounded-r-sm cursor-pointer text-sm active:bg-red-900' type='submit'>
                       Search
                   </button>
