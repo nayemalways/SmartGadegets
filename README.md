@@ -14,4 +14,10 @@
     - Mongoose (For better schema management)
   
  ## Developement Bugs:
- - Loading...
+ - ***Wrong state changes***: In small devices, I used a pop-up searchbar. Where user's click search icon and an pop-up will open and when click outside of the components the pop-up will close. But I changed the state simutenously false to true and false like *setToggle(prev => !prev)* on outside click instead of *setToggloe(false)*. **That's why when I clicked anywhere of the UI, the searchbar was being opend and close also search icon. Set the state only false ->**   
+  ``` 
+  setToggle(false); //Solution 
+  ```
+ 
+  
+
