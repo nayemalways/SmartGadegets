@@ -1,9 +1,33 @@
 import { Link, NavLink } from 'react-router-dom';
-import logo from '../assets/images/logo.png';
+import logo2 from '../assets/images/logo2.png';
 import Dropdown from '../components/Dropdown';
 import Searchbar from '../components/Searchbar';
+import { useEffect, useRef, useState } from 'react';
  
 const Navbar = () => {
+  const [navToggler, setNavToggleer] = useState(false);
+  const navRef = useRef(null);
+
+  console.log(navToggler);
+  
+      const navToggleHandler = () => {
+          setNavToggleer(prev => !prev);
+      }
+      
+      useEffect(() => {
+        let outsideClickHandler = (event) => {
+          if (navRef.current && !navRef.current.contains(event.target)) {
+      setNavToggleer(false);
+    }
+        };
+
+        document.addEventListener("mousedown", outsideClickHandler);
+
+        return () => {
+          document.removeEventListener("mousedown", outsideClickHandler);
+        }
+      })
+   
   return (
     <header className='border-b border-gray '>
       {/* Top banner */}
@@ -21,12 +45,24 @@ const Navbar = () => {
         {/* Logo */}
         <div className='max-w-25 md:max-w-40'>
           <Link to='/' className='flex'>
-            <img className='w-full shrink-0' src={logo} alt="Logo" />
+            <img className='w-full shrink-0' src={logo2} alt="Logo" />
           </Link>
         </div>
 
         {/* Nav Links */}
-        <ul className='hidden lg:flex lg:space-x-8'>
+        <ul
+        className={`flex flex-col 
+        max-sm:absolute max-sm:z-40 
+        max-sm:top-0 max-sm:left-0 
+        max-sm:bg-slate-100 max-sm:w-40 
+        max-sm:h-screen max-sm:ps-3 
+        max-sm:py-3 max-sm:rounded 
+        max-sm:gap-4 sm:flex-row 
+        lg:space-x-8 ease-linear 
+        duration-300 
+        ${navToggler ? "max-sm:translate-x-0":"max-sm:-translate-x-100"}`}
+        >
+          <img className='sm:hidden shrink-0 w-28 h-auto object-contain bg-transparent' src={logo2} alt="Logo" />
           <li><NavLink className='nav-links' to='/'>Home</NavLink></li>
           <li><NavLink className='nav-links' to='/contact'>Contact</NavLink></li>
           <li><NavLink className='nav-links' to='/about'>About</NavLink></li>
@@ -60,8 +96,19 @@ const Navbar = () => {
             {/* Profile Dropdown */}
                <Dropdown />
             {/* End Profile */}
+
+            {/* Hamburger Menu  */}
           </div>
         </div>
+
+        {/* Hamburger Menu  */}
+        <label ref={navRef} onClick={navToggleHandler} className="btn btn-circle swap swap-rotate sm:hidden border-none bg-transparent">
+                <div className='w-5 flex flex-col gap-1.5 relative '>
+                    <div className={`w-full h-[3px] bg-black ease-linear duration-200 ${navToggler ? "rotate-45 absolute  ":""}`}></div>
+                    <div className={`w-full h-[3px] bg-black ml-0.5 ${navToggler ? "hidden":""}`}></div>
+                    <div className={`w-full h-[3px] bg-black ease-linear duration-200 ${navToggler ? "-rotate-45 absolute ":""}`}></div>
+                </div>
+        </label>
       </nav>
     </header>
   );
