@@ -1,13 +1,9 @@
-import  React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import logo from '../assets/images/logo.png';
 import Dropdown from '../components/Dropdown';
+import Searchbar from '../components/Searchbar';
  
 const Navbar = () => {
-  const cart = 12;
-
- 
-
   return (
     <header className='border-b border-gray '>
       {/* Top banner */}
@@ -38,20 +34,9 @@ const Navbar = () => {
         </ul>
 
         {/* Search & Icons */}
-        <div className='flex items-center space-x-5 max-lg:basis-[60%] max-lg:justify-between max-sm:justify-end'>
+        <div className='flex items-center space-x-5 max-lg:basis-[60%] max-lg:justify-between   max-sm:justify-end'>
           {/* Search */}
-          <div className='space-x-0 sm:space-x-3 px-0 sm:px-4 py-1 rounded sm:bg-[#F5F5F5] '>
-            <input className='border-none outline-none text-[12px] max-sm:hidden' id='search'  type="text" placeholder='What are you looking for?' />
-            <button className='active:text-primary' type='submit'>
-              <svg xmlns="http://www.w3.org/2000/svg" className="size-5 cursor-pointer focus:bg-sky-400 block sm:inline-block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
-              </svg>
-            </button>
-
-            {/* Small devices pop-up searchbar  */}
-            
-          </div>
-
+            <Searchbar />
           {/* Icons */}
           <div className='flex space-x-8 sm:space-x-6'>
             <Link to='/' className='self-center w-1 sm:w-auto'>
@@ -63,7 +48,7 @@ const Navbar = () => {
             {/* Cart */}
             <Link to='/' className="relative self-center w-1 sm:w-auto ">
               <span className="absolute -end-6 -top-2 sm:-end-[10px] w-5 h-5 bg-primary text-white flex justify-center items-center rounded-full text-xs">
-                {cart}
+                {2}
               </span>
               <svg xmlns="http://www.w3.org/2000/svg" className="lucide lucide-shopping-cart size-6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <circle cx="8" cy="21" r="1" />
