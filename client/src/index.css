@@ -17,14 +17,13 @@
   --color-primary: #DB4444;
   --color-secondary: #000000;
   --color-gray: #bfbfbf;
+  --color-slate-gray: oklch(0.968 0.007 247.896);
   --color-text-color: #FAFAFA;
   --font-poppins: "Poppins", sans-serif;
   --font-inter: "Inter", sans-serif;
 }
 
-body{
-  background-color: #88838d;
-}
+ 
 
   @layer base {
       * {
