@@ -22,7 +22,9 @@
   --font-inter: "Inter", sans-serif;
 }
 
-
+body{
+  background-color: #88838d;
+}
 
   @layer base {
       * {
