@@ -1,33 +1,18 @@
-import  { useEffect, useRef, useState } from 'react';
+import  { useRef, useState } from 'react';
+import useClickOutside from '../hooks/useClickOutside';
 
 const Searchbar = () => {
-    const [toggle, setToggle] = useState(false);
-      const smallSearchbar = useRef(null);
-     
-      const searchbarToggler = () => {
-        setToggle(prev => !prev);
-      };
+    const [isOpen, setIsOpen] = useState(false);
+    const searchRef = useRef(null);
+    // Custom Hook: Handle Outside click handler
+    useClickOutside(searchRef, () => setIsOpen(false))
     
-    
-       // Close dropdown when clicking outside
-       useEffect(() => {
-        const handleClickOutside = (event) => {
-          if(smallSearchbar.current && !smallSearchbar.current.contains(event.target)) {
-            setToggle(false);
-          }
-        }
-        document.addEventListener('mousedown', handleClickOutside);
-    
-        return () => {
-          document.removeEventListener('mousedown', handleClickOutside)
-        }
-       }, []);
-    
+       
     return (
         <>
-            <div ref={smallSearchbar}  className='relative py-1 space-x-0 max-md:mr-2.5 sm:space-x-3 px-0 sm:ps-3  rounded md:bg-[#F5F5F5] '>
+            <div ref={searchRef}  className='relative py-1 space-x-0 max-md:mr-2.5 sm:space-x-3 px-0 sm:ps-3  rounded md:bg-[#F5F5F5] '>
               <input className='border-none outline-none text-[12px] max-md:hidden' id='search'  type="text" placeholder='What are you looking for?' />
-              <button className='active:text-primary max-sm:align-middle' onClick={searchbarToggler} type='submit'>
+              <button className='active:text-primary max-sm:align-middle' onClick={() => setIsOpen(prev => !prev)} type='submit'>
                 <svg 
                 xmlns="http://www.w3.org/2000/svg" 
                 className="size-6 cursor-pointer focus:bg-sky-400 block sm:inline-block" 
@@ -40,7 +25,7 @@ const Searchbar = () => {
               </button>
 
               {/* Small devices pop-up searchbar  */}
-              <div className={`w-70 h-20 bg-slate-gray rounded-md flex justify-center items-center shadow-md absolute -left-30 top-10 z-20 md:hidden ${toggle ? "block":"hidden"}`}>
+              <div className={`w-70 h-20 bg-slate-gray rounded-md flex justify-center items-center shadow-md absolute -left-30 top-10 z-20 md:hidden ${isOpen ? "block":"hidden"}`}>
                 <input className='w-[70%] border-l-1 border-t-1 border-b-1 border-primary outline-none text-[12px] px-2 py-1 rounded-l-sm' id='phone_search'  type="text" placeholder='What are you looking for?' />
                 <button className='bg-primary text-text-color px-2 py-1 rounded-r-sm cursor-pointer text-sm active:bg-red-900' type='submit'>
                       Search

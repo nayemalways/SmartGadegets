@@ -1,30 +1,19 @@
+import { useRef, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
+
 import logo2 from '../assets/images/logo2.png';
 import Dropdown from '../components/Dropdown';
 import Searchbar from '../components/Searchbar';
-import { useEffect, useRef, useState } from 'react';
+import useClickOutside from '../hooks/useClickOutside';
  
+
+
 const Navbar = () => {
-  const [navToggler, setNavToggleer] = useState(false);
+  const [isToggle, setToggle] = useState(false);
   const navRef = useRef(null);
   
-    const navToggleHandler = () => {
-        setNavToggleer(prev => !prev);
-    }
-    
-    useEffect(() => {
-      let outsideClickHandler = (event) => {
-        if (navRef.current && !navRef.current.contains(event.target)) {
-        setNavToggleer(false);
-        }
-      };
-
-        document.addEventListener("mousedown", outsideClickHandler);
-
-        return () => {
-          document.removeEventListener("mousedown", outsideClickHandler);
-        }
-      })
+  // Custom Hook: Handle Outside click handler
+  useClickOutside(navRef, () => setToggle(false));
    
   return (
     <header className='border-b border-gray '>
@@ -69,7 +58,7 @@ const Navbar = () => {
         sm:flex-row 
         lg:space-x-8 ease-linear 
         duration-300 
-        ${navToggler ? "max-sm:translate-x-0":"max-sm:-translate-x-100"}`}
+        ${isToggle ? "max-sm:translate-x-0":"max-sm:-translate-x-100"}`}
         >
           {/* Sidebar Logo  */}
           <img className='sm:hidden shrink-0 w-28 h-auto object-contain bg-transparent' src={logo2} alt="Logo" />
@@ -81,7 +70,7 @@ const Navbar = () => {
 
         {/* Search & Icons */}
         <div className='flex items-center space-x-5 max-sm:basis-[60%] max-lg:justify-between max-sm:justify-end'>
-          {/* Search */}
+          {/* Searchbar */}
             <Searchbar />
           {/* Wish */}
           <div className='flex space-x-8 sm:space-x-6'>
@@ -105,20 +94,19 @@ const Navbar = () => {
 
             {/* Profile Dropdown */}
                <Dropdown />
-            {/* End Profile */}
 
             {/* Hamburger Menu  */}
           </div>
-        </div>
+          </div>
 
-        {/* Hamburger Menu  */}
-        <label ref={navRef} onClick={navToggleHandler} className="btn btn-circle swap swap-rotate sm:hidden border-none bg-transparent">
-                <div className='w-5 flex flex-col gap-1.5 relative '>
-                    <div className={`w-full h-[3px] bg-black ease-linear duration-200 ${navToggler ? "rotate-45 absolute  ":""}`}></div>
-                    <div className={`w-full h-[3px] bg-black ml-0.5 ${navToggler ? "hidden":""}`}></div>
-                    <div className={`w-full h-[3px] bg-black ease-linear duration-200 ${navToggler ? "-rotate-45 absolute ":""}`}></div>
-                </div>
-        </label>
+          {/* Hamburger Menu  */}
+          <label ref={navRef} onClick={() => setToggle(prev => !prev)} className="btn btn-circle swap swap-rotate sm:hidden border-none bg-transparent">
+                  <div className='w-5 flex flex-col gap-1.5 relative '>
+                      <div className={`w-full h-[3px] bg-black ease-linear duration-200 ${isToggle ? "rotate-45 absolute  ":""}`}></div>
+                      <div className={`w-full h-[3px] bg-black ml-0.5 ${isToggle ? "hidden":""}`}></div>
+                      <div className={`w-full h-[3px] bg-black ease-linear duration-200 ${isToggle ? "-rotate-45 absolute ":""}`}></div>
+                  </div>
+          </label>
       </nav>
     </header>
   );
