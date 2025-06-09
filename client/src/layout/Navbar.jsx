@@ -7,19 +7,17 @@ import { useEffect, useRef, useState } from 'react';
 const Navbar = () => {
   const [navToggler, setNavToggleer] = useState(false);
   const navRef = useRef(null);
-
-  console.log(navToggler);
   
-      const navToggleHandler = () => {
-          setNavToggleer(prev => !prev);
-      }
-      
-      useEffect(() => {
-        let outsideClickHandler = (event) => {
-          if (navRef.current && !navRef.current.contains(event.target)) {
-      setNavToggleer(false);
+    const navToggleHandler = () => {
+        setNavToggleer(prev => !prev);
     }
-        };
+    
+    useEffect(() => {
+      let outsideClickHandler = (event) => {
+        if (navRef.current && !navRef.current.contains(event.target)) {
+        setNavToggleer(false);
+        }
+      };
 
         document.addEventListener("mousedown", outsideClickHandler);
 
@@ -51,17 +49,29 @@ const Navbar = () => {
 
         {/* Nav Links */}
         <ul
-        className={`flex flex-col 
-        max-sm:absolute max-sm:z-40 
-        max-sm:top-0 max-sm:left-0 
-        max-sm:bg-slate-100 max-sm:w-40 
-        max-sm:h-screen max-sm:ps-3 
-        max-sm:py-3 max-sm:rounded 
-        max-sm:gap-4 sm:flex-row 
+        className={`
+        flex 
+        flex-col 
+        max-sm:absolute 
+        max-sm:z-40 
+        max-sm:top-0 
+        max-sm:left-0 
+        max-sm:bg-slate-100 
+        max-sm:w-40 
+        max-sm:h-screen 
+        max-sm:ps-3 
+        max-sm:py-3 
+        max-sm:rounded 
+        max-sm:gap-4
+        max-md:grow
+        max-md:justify-center
+        max-md:gap-5 
+        sm:flex-row 
         lg:space-x-8 ease-linear 
         duration-300 
         ${navToggler ? "max-sm:translate-x-0":"max-sm:-translate-x-100"}`}
         >
+          {/* Sidebar Logo  */}
           <img className='sm:hidden shrink-0 w-28 h-auto object-contain bg-transparent' src={logo2} alt="Logo" />
           <li><NavLink className='nav-links' to='/'>Home</NavLink></li>
           <li><NavLink className='nav-links' to='/contact'>Contact</NavLink></li>
@@ -70,10 +80,10 @@ const Navbar = () => {
         </ul>
 
         {/* Search & Icons */}
-        <div className='flex items-center space-x-5 max-lg:basis-[60%] max-lg:justify-between   max-sm:justify-end'>
+        <div className='flex items-center space-x-5 max-sm:basis-[60%] max-lg:justify-between max-sm:justify-end'>
           {/* Search */}
             <Searchbar />
-          {/* Icons */}
+          {/* Wish */}
           <div className='flex space-x-8 sm:space-x-6'>
             <Link to='/' className='self-center w-1 sm:w-auto'>
               <svg xmlns="http://www.w3.org/2000/svg" className="size-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
