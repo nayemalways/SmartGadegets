@@ -55,4 +55,8 @@
     before:duration-300
     hover:before:w-full 
   }
+
+  .bg-transparent {
+    background: transparent;
+  }
 }

@@ -1,32 +1,19 @@
+import { useRef, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
+
 import logo2 from '../assets/images/logo2.png';
 import Dropdown from '../components/Dropdown';
 import Searchbar from '../components/Searchbar';
-import { useEffect, useRef, useState } from 'react';
+import useClickOutside from '../hooks/useClickOutside';
  
+
+
 const Navbar = () => {
-  const [navToggler, setNavToggleer] = useState(false);
+  const [isToggle, setToggle] = useState(false);
   const navRef = useRef(null);
-
-  console.log(navToggler);
   
-      const navToggleHandler = () => {
-          setNavToggleer(prev => !prev);
-      }
-      
-      useEffect(() => {
-        let outsideClickHandler = (event) => {
-          if (navRef.current && !navRef.current.contains(event.target)) {
-      setNavToggleer(false);
-    }
-        };
-
-        document.addEventListener("mousedown", outsideClickHandler);
-
-        return () => {
-          document.removeEventListener("mousedown", outsideClickHandler);
-        }
-      })
+  // Custom Hook: Handle Outside click handler
+  useClickOutside(navRef, () => setToggle(false));
    
   return (
     <header className='border-b border-gray '>
@@ -51,17 +38,29 @@ const Navbar = () => {
 
         {/* Nav Links */}
         <ul
-        className={`flex flex-col 
-        max-sm:absolute max-sm:z-40 
-        max-sm:top-0 max-sm:left-0 
-        max-sm:bg-slate-100 max-sm:w-40 
-        max-sm:h-screen max-sm:ps-3 
-        max-sm:py-3 max-sm:rounded 
-        max-sm:gap-4 sm:flex-row 
+        className={`
+        flex 
+        flex-col 
+        max-sm:absolute 
+        max-sm:z-40 
+        max-sm:top-0 
+        max-sm:left-0 
+        max-sm:bg-slate-100 
+        max-sm:w-40 
+        max-sm:h-screen 
+        max-sm:ps-3 
+        max-sm:py-3 
+        max-sm:rounded 
+        max-sm:gap-4
+        max-md:grow
+        max-md:justify-center
+        max-md:gap-5 
+        sm:flex-row 
         lg:space-x-8 ease-linear 
         duration-300 
-        ${navToggler ? "max-sm:translate-x-0":"max-sm:-translate-x-100"}`}
+        ${isToggle ? "max-sm:translate-x-0":"max-sm:-translate-x-100"}`}
         >
+          {/* Sidebar Logo  */}
           <img className='sm:hidden shrink-0 w-28 h-auto object-contain bg-transparent' src={logo2} alt="Logo" />
           <li><NavLink className='nav-links' to='/'>Home</NavLink></li>
           <li><NavLink className='nav-links' to='/contact'>Contact</NavLink></li>
@@ -70,10 +69,10 @@ const Navbar = () => {
         </ul>
 
         {/* Search & Icons */}
-        <div className='flex items-center space-x-5 max-lg:basis-[60%] max-lg:justify-between   max-sm:justify-end'>
-          {/* Search */}
+        <div className='flex items-center space-x-5 max-sm:basis-[60%] max-lg:justify-between max-sm:justify-end'>
+          {/* Searchbar */}
             <Searchbar />
-          {/* Icons */}
+          {/* Wish */}
           <div className='flex space-x-8 sm:space-x-6'>
             <Link to='/' className='self-center w-1 sm:w-auto'>
               <svg xmlns="http://www.w3.org/2000/svg" className="size-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -95,20 +94,19 @@ const Navbar = () => {
 
             {/* Profile Dropdown */}
                <Dropdown />
-            {/* End Profile */}
 
             {/* Hamburger Menu  */}
           </div>
-        </div>
+          </div>
 
-        {/* Hamburger Menu  */}
-        <label ref={navRef} onClick={navToggleHandler} className="btn btn-circle swap swap-rotate sm:hidden border-none bg-transparent">
-                <div className='w-5 flex flex-col gap-1.5 relative '>
-                    <div className={`w-full h-[3px] bg-black ease-linear duration-200 ${navToggler ? "rotate-45 absolute  ":""}`}></div>
-                    <div className={`w-full h-[3px] bg-black ml-0.5 ${navToggler ? "hidden":""}`}></div>
-                    <div className={`w-full h-[3px] bg-black ease-linear duration-200 ${navToggler ? "-rotate-45 absolute ":""}`}></div>
-                </div>
-        </label>
+          {/* Hamburger Menu  */}
+          <label ref={navRef} onClick={() => setToggle(prev => !prev)} className="btn btn-circle swap swap-rotate sm:hidden border-none bg-transparent">
+                  <div className='w-5 flex flex-col gap-1.5 relative '>
+                      <div className={`w-full h-[3px] bg-black ease-linear duration-200 ${isToggle ? "rotate-45 absolute  ":""}`}></div>
+                      <div className={`w-full h-[3px] bg-black ml-0.5 ${isToggle ? "hidden":""}`}></div>
+                      <div className={`w-full h-[3px] bg-black ease-linear duration-200 ${isToggle ? "-rotate-45 absolute ":""}`}></div>
+                  </div>
+          </label>
       </nav>
     </header>
   );
