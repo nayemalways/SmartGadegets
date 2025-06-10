@@ -41,19 +41,18 @@ const Navbar = () => {
         className={`
         flex 
         flex-col 
+        max-sm:w-50 
         max-sm:absolute 
         max-sm:z-40 
         max-sm:top-0 
         max-sm:left-0 
-        max-sm:bg-slate-100 
-        max-sm:w-40 
+        max-sm:bg-slate-300 
         max-sm:h-screen 
         max-sm:ps-3 
         max-sm:py-3 
         max-sm:rounded 
-        max-sm:gap-4
+        max-sm:gap-6
         max-md:grow
-        max-md:justify-center
         max-md:gap-5 
         sm:flex-row 
         lg:space-x-8 ease-linear 
@@ -67,6 +66,9 @@ const Navbar = () => {
           <li><NavLink className='nav-links' to='/about'>About</NavLink></li>
           <li><NavLink className='nav-links' to='/register'>Sign Up</NavLink></li>
         </ul>
+
+        {/* Dark overlay when sidebar open (Don't touch) */}
+        <div className={`w-full h-screen absolute bg-[#00000070] bottom-0 left-0 ${isToggle ? "block":"hidden"}`}></div>
 
         {/* Search & Icons */}
         <div className='flex items-center space-x-5 max-sm:basis-[60%] max-lg:justify-between max-sm:justify-end'>
