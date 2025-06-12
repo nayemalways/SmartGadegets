@@ -11,7 +11,7 @@ const Searchbar = () => {
     return (
         <>
             <div ref={searchRef}  className='relative py-1 space-x-0 max-md:mr-2.5 sm:space-x-3 px-0 sm:ps-3  rounded md:bg-[#F5F5F5] '>
-              <input className='border-none outline-none text-[12px] max-md:hidden' id='search'  type="text" placeholder='What are you looking for?' />
+              <input className='border-none outline-none font-poppins text-[12px] max-md:hidden ' id='search'  type="text" placeholder='What are you looking for?' />
               <button className='active:text-primary max-sm:align-middle' onClick={() => setIsOpen(prev => !prev)} type='submit'>
                 <svg 
                 xmlns="http://www.w3.org/2000/svg" 
