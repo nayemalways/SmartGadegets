@@ -38,33 +38,20 @@ const Navbar = () => {
 
         {/* Nav Links */}
         <ul
-        className={`
-        flex 
-        flex-col 
-        max-sm:w-50 
-        max-sm:absolute 
-        max-sm:z-40 
-        max-sm:top-0 
-        max-sm:left-0 
-        max-sm:bg-slate-300 
-        max-sm:h-screen 
-        max-sm:ps-3 
-        max-sm:py-3 
-        max-sm:rounded 
-        max-sm:gap-6
-        max-md:grow
-        max-md:gap-5 
-        sm:flex-row 
-        lg:space-x-8 ease-linear 
-        duration-300 
+        className={`flex flex-col max-sm:w-50 
+        max-sm:absolute max-sm:z-40 max-sm:top-0 
+        max-sm:left-0 max-sm:bg-slate-300 max-sm:h-screen 
+        max-sm:ps-3 max-sm:py-3 max-sm:rounded max-sm:gap-6
+        max-md:grow max-md:gap-5 sm:flex-row 
+        lg:space-x-8 ease-linear duration-300 
         ${isToggle ? "max-sm:translate-x-0":"max-sm:-translate-x-100"}`}
         >
           {/* Sidebar Logo  */}
           <img className='sm:hidden shrink-0 w-28 h-auto object-contain bg-transparent' src={logo2} alt="Logo" />
-          <li><NavLink className='nav-links' to='/'>Home</NavLink></li>
-          <li><NavLink className='nav-links' to='/contact'>Contact</NavLink></li>
-          <li><NavLink className='nav-links' to='/about'>About</NavLink></li>
-          <li><NavLink className='nav-links' to='/register'>Sign Up</NavLink></li>
+          <li><NavLink className='nav-links font-poppins' to='/'>Home</NavLink></li>
+          <li><NavLink className='nav-links font-poppins' to='/contact'>Contact</NavLink></li>
+          <li><NavLink className='nav-links font-poppins' to='/about'>About</NavLink></li>
+          <li><NavLink className='nav-links font-poppins' to='/register'>Sign Up</NavLink></li>
         </ul>
 
         {/* Dark overlay when sidebar open (Don't touch) */}
