@@ -1,36 +1,28 @@
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
-
-// import Swiper css
-import 'swiper/css';
-import 'swiper/css/navigation'
-import 'swiper/css/pagination'
-import 'swiper/css/scrollbar'
+import React from 'react';
+import HeroSlider from './HeroSlider';
 
 const HeroSection = () => {
     return (
-        <>
-            <Swiper
-                modules={[Navigation, Pagination, Scrollbar, A11y]}
-                spaceBetween={50}
-                slidesPerView={1}
-                autoplay
-                pagination={{clickable: true}}
-                scrollbar={{clickable: true}}
-                onSlideChange={() => console.log('slide change')}
-                onSwiper={(swiper) => console.log(swiper)}
-                className='h-66'
-               
-            >
-                <SwiperSlide  className='bg-red-400'>Slide 1</SwiperSlide>
-                <SwiperSlide  className='bg-indigo-400'>Slide 2</SwiperSlide>
-                <SwiperSlide  className='bg-sky-400'>Slide 3</SwiperSlide>
-                <SwiperSlide  className='bg-gray-400'>Slide 4</SwiperSlide>
-                <SwiperSlide  className='bg-teal-400'>Slide 5</SwiperSlide>
-                <SwiperSlide  className='bg-teal-400'>Slide 6</SwiperSlide>
-                <SwiperSlide  className='bg-teal-400'>Slide 7</SwiperSlide>
-            </Swiper>
-        </>
+        <section className='container w-full h-90 flex justify-between'>
+            <div className='flex-1/4 border-r-1 border-slate-300'>
+                <ul className='flex flex-col justify-center w-full h-full gap-3'>
+                    <li className='font-poppins font-normal text-[16px]'>Women's Fashion</li>
+                    <li className='font-poppins font-normal text-[16px]'>Men's Fashion</li>
+                    <li className='font-poppins font-normal text-[16px]'>Electronics</li>
+                    <li className='font-poppins font-normal text-[16px]'>Home & Lifestyle</li>
+                    <li className='font-poppins font-normal text-[16px]'>Medicine</li>
+                    <li className='font-poppins font-normal text-[16px]'>Sports & Outdoor</li>
+                    <li className='font-poppins font-normal text-[16px]'>Baby's & Toys</li>
+                    <li className='font-poppins font-normal text-[16px]'>Groceries & Pets</li>
+                    <li className='font-poppins font-normal text-[16px]'>Health & Beauty</li>
+                </ul>
+            </div>
+            <div className=' flex-3/4 flex justify-end items-end'> 
+               <div className='max-w-195 h-80 relative'>
+                    <HeroSlider />
+               </div>
+            </div>
+        </section>
     );
 };
 
