@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import useClickOutside from '../hooks/useClickOutside';
 
@@ -20,7 +20,7 @@ const Dropdown = () => {
     return (
          
             <div>
-              <div ref={dropdownRef} className='w-7 md:w-10 md:h-10 border rounded-full flex justify-center items-center overflow-hidden cursor-pointer' onClick={dropdownHandler}>
+              <div ref={dropdownRef} className='w-7 md:w-10 md:h-10 border rounded-full flex justify-center items-center overflow-hidden cursor-pointer relative' onClick={dropdownHandler}>
                 <img className='w-full' src="https://i.pravatar.cc/30" alt="Profile_Icon" />
               </div>
                <ul className={`w-56 absolute mt-1 right-1 md:right-15 lg:right-10 xl:right-25 overflow-hidden rounded-lg bg-gray-900/90 backdrop-blur-xl shadow-lg duration-400 ${dropdownOpen ? "opacity-100":"opacity-0 -translate-x-4 "}`}>

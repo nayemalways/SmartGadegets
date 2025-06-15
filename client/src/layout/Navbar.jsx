@@ -83,10 +83,8 @@ const Navbar = () => {
 
             {/* Profile Dropdown */}
                <Dropdown />
-
-            {/* Hamburger Menu  */}
           </div>
-          </div>
+        </div>
 
           {/* Hamburger Menu  */}
           <label ref={navRef} onClick={() => setToggle(prev => !prev)} className="btn btn-circle swap swap-rotate sm:hidden border-none bg-transparent">

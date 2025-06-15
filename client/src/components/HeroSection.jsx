@@ -17,7 +17,7 @@ const HeroSection = () => {
                     <li className='font-poppins font-normal text-[16px]'>Health & Beauty</li>
                 </ul>
             </div>
-            <div className=' flex-3/4 flex justify-end items-end'> 
+            <div className=' flex-3/4 flex justify-end items-end -z-10'> 
                <div className='max-w-195 h-80 relative'>
                     <HeroSlider />
                </div>
