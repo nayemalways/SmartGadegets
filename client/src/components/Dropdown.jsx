@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
+import useClickOutside from '../hooks/useClickOutside';
 
 
 const Dropdown = () => {
@@ -7,23 +8,14 @@ const Dropdown = () => {
   const dropdownRef = useRef(null);
   
 
+  // Dropdown Handler
   const dropdownHandler = () => {
     setDropdownOpen(prev => !prev)
   }
 
-   // Close dropdown when clicking outside
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        setDropdownOpen(false);
-      }
-    };
-
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, []);
+  // Close dropdown when clicking outside
+  useClickOutside(dropdownRef, dropdownHandler, () => setDropdownOpen(false));
+ 
    
     return (
          
