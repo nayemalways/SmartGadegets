@@ -19,7 +19,7 @@ const Dropdown = () => {
    
     return (
          
-            <div>
+            <div className='z-50'>
               <div ref={dropdownRef} className='w-7 md:w-10 md:h-10 border rounded-full flex justify-center items-center overflow-hidden cursor-pointer relative' onClick={dropdownHandler}>
                 <img className='w-full' src="https://i.pravatar.cc/30" alt="Profile_Icon" />
               </div>
