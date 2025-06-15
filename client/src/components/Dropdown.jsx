@@ -14,7 +14,7 @@ const Dropdown = () => {
   }
 
   // Close dropdown when clicking outside
-  useClickOutside(dropdownRef, dropdownHandler, () => setDropdownOpen(false));
+  useClickOutside(dropdownRef, () => setDropdownOpen(false));
  
    
     return (
