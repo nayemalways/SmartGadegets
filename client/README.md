@@ -1,6 +1,6 @@
-# React + Vite
+# Smart Gadget Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is client side of ***Smart Gadeget*** E-commerce project 
 
 Currently, two official plugins are available:
 
