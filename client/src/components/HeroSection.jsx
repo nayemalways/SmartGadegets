@@ -3,8 +3,8 @@ import HeroSlider from './HeroSlider';
 
 const HeroSection = () => {
     return (
-        <section className='container w-full h-90 flex justify-between'>
-            <div className='flex-1/4 border-r-1 border-slate-300'>
+        <section className='container w-full h-auto md:h-90 grid grid-cols-12 justify-between max-md:flex-col-reverse'>
+            <div className='hidden md:block md:col-span-3 border-r-1 border-slate-300'>
                 <ul className='flex flex-col justify-center w-full h-full gap-3'>
                     <li className='font-poppins font-normal text-[16px]'>Women's Fashion</li>
                     <li className='font-poppins font-normal text-[16px]'>Men's Fashion</li>
@@ -17,10 +17,8 @@ const HeroSection = () => {
                     <li className='font-poppins font-normal text-[16px]'>Health & Beauty</li>
                 </ul>
             </div>
-            <div className=' flex-3/4 flex justify-end items-end -z-10'> 
-               <div className='max-w-195 h-80 relative'>
+            <div className='col-span-12 md:col-span-9 w-full z-10'> 
                     <HeroSlider />
-               </div>
             </div>
         </section>
     );
