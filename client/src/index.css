@@ -59,4 +59,19 @@
   .bg-transparent {
     background: transparent;
   }
+
+
+ .fluid-box {
+      width: clamp(250px, 90vw, 780px);
+      height: clamp(200px, 30vw, 300px);
+      background-color: #e2e8f0;
+      margin: 20px auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: sans-serif;
+    }
+
+
+
 }
